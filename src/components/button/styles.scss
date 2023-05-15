@@ -1,0 +1,8 @@
+@use "../../scss/variables.scss";
+.button {
+  background-color: variables.$primary;
+  color: white;
+  font-weight: bold;
+  padding-block: 15px;
+  padding-inline: 45px;
+}

@@ -1,0 +1,7 @@
+section {
+  height: 100vh;
+
+  &:first-of-type {
+    height: calc(100vh - 90px);
+  }
+}

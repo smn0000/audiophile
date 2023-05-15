@@ -1,0 +1,54 @@
+@use "../../scss/variables.scss";
+
+.hero__wrapper {
+  background-image: url("../../../assets/home/mobile/image-header.jpg");
+
+  @media (min-width: 768px) {
+    background-image: url("../../../assets/home/tablet/image-header.jpg");
+  }
+  @media (min-width: 1024px) {
+    background-image: url("../../../assets/home/desktop/image-hero.jpg");
+  }
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+}
+
+.hero {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  color: white;
+  gap: 25px;
+  padding-inline: 10%;
+
+  .overline {
+    color: #ffffff79;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero__wrapper {
+    justify-content: center;
+  }
+  .hero {
+    align-items: center;
+    text-align: center;
+    padding: 0;
+  }
+}
+
+@media (max-width: 510px) {
+  .hero {
+    width: 100%;
+  }
+  h1 {
+    font-size: 38px;
+  }
+}
