@@ -1,0 +1,181 @@
+@use "./variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap");
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+code,
+em,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+main,
+canvas,
+embed,
+footer,
+header,
+nav,
+section,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+
+  font-family: "Manrope", sans-serif;
+}
+
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+h1 {
+  font-size: 56px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 58px;
+}
+
+h2 {
+  font-size: 40px;
+  text-transform: uppercase;
+  line-height: 44px;
+  letter-spacing: 1.5px;
+}
+
+h3 {
+  font-size: 32px;
+  text-transform: uppercase;
+  line-height: 36px;
+  letter-spacing: 1.15px;
+}
+
+h4 {
+  font-size: 28px;
+  text-transform: uppercase;
+  line-height: 38px;
+  letter-spacing: 2px;
+}
+
+h5 {
+  font-size: 24px;
+  text-transform: uppercase;
+  line-height: 33px;
+  letter-spacing: 1.7px;
+}
+
+h6 {
+  font-size: 18px;
+  text-transform: uppercase;
+  line-height: 24px;
+  letter-spacing: 1.3px;
+}
+
+.overline {
+  font-size: 13px;
+  text-transform: uppercase;
+  line-height: 19px;
+  letter-spacing: 10px;
+  color: variables.$primary;
+}
+
+.subtitle {
+  font-size: 13px;
+  text-transform: uppercase;
+  line-height: 25px;
+  letter-spacing: 1px;
+  color: variables.$primary;
+}
+
+body {
+  font-size: 15px;
+  line-height: 25px;
+}
