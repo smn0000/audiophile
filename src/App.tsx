@@ -1,11 +1,32 @@
 import "./scss/global.scss"
 import { Routes, Route } from "react-router-dom"
-import Navbar from "./navbar/Navbar"
+import Navbar from "./components/navbar/Navbar"
+import Home from "./pages/home/Home"
+import Category from "./pages/category/Category"
+import Product from "./pages/product/Product"
+import Checkout from "./pages/checkout/Checkout"
 function App() {
   return (
     <>
       <Navbar></Navbar>
-      <Routes></Routes>
+      <Routes>
+        <Route
+          path='/'
+          element={<Home />}
+        />
+        <Route
+          path='/category/:name'
+          element={<Category />}
+        />
+        <Route
+          path='/product/:name'
+          element={<Product />}
+        />
+        <Route
+          path='/checkout'
+          element={<Checkout />}
+        />
+      </Routes>
     </>
   )
 }
