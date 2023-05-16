@@ -1,7 +1,7 @@
 section {
-  height: 100vh;
+  margin-bottom: 50px;
 
   &:first-of-type {
-    height: calc(100vh - 90px);
+    margin-bottom: 25px;
   }
 }

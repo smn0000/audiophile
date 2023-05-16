@@ -12,7 +12,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100%;
+  height: calc(100vh - 90px);
   display: flex;
   justify-content: start;
 }
@@ -33,6 +33,9 @@
   }
 }
 
+.hero__description {
+  padding-inline: 5%;
+}
 @media (max-width: 1024px) {
   .hero__wrapper {
     justify-content: center;

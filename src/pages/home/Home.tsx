@@ -2,6 +2,8 @@ import "./styles.scss"
 import "../page.scss"
 import Button from "../../components/button/Button"
 
+import ProductCategories from "../../components/product-category/ProductCategories"
+
 const Home = () => {
   return (
     <div className='home'>
@@ -10,7 +12,7 @@ const Home = () => {
           <div className='hero'>
             <p className='overline'>NEW PRODUCT</p>
             <h1>XX99 MARK II HEADPHONES</h1>
-            <p>
+            <p className='hero__description'>
               Experience natural, lifelike audio and exceptional build quality
               made for the passionate music enthusiast.
             </p>
@@ -20,6 +22,9 @@ const Home = () => {
             />
           </div>
         </div>
+      </section>
+      <section>
+        <ProductCategories />
       </section>
     </div>
   )
