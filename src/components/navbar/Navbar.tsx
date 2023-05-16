@@ -1,13 +1,25 @@
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
+import { useOnClickOutside } from "usehooks-ts"
+import { useLocation } from "react-router-dom"
+
 import MobileMenu from "./Mobilemenu/MobileMenu"
 import "./styles.scss"
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false)
+  const navRef = useRef(null)
+  const location = useLocation()
+  useEffect(() => {
+    setShowMenu(false)
+  }, [location])
+
+  useOnClickOutside(navRef, () => setShowMenu(false))
 
   return (
     <>
-      <nav className='navbar'>
+      <nav
+        className='navbar'
+        ref={navRef}>
         <ul className='nav__items'>
           <li className='nav__left'>
             <button onClick={() => setShowMenu((current) => !current)}>
@@ -68,8 +80,9 @@ const Navbar = () => {
             </button>
           </li>
         </ul>
+        {showMenu && <MobileMenu closeMenu={() => setShowMenu(false)} />}
       </nav>
-      {showMenu && <MobileMenu />}
+      {showMenu && <div className='mobile-menu__background'></div>}
     </>
   )
 }

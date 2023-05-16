@@ -1,6 +1,18 @@
 import Button from "../button/Button"
+import { useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 import "./styles.scss"
-const ProductCategory = ({ name, image }: { name: string; image: string }) => {
+const ProductCategory = ({
+  name,
+  image,
+  linkTo,
+}: {
+  name: string
+  image: string
+  linkTo: string
+}) => {
+  const navigate = useNavigate()
+
   return (
     <div className='product-category__wrapper'>
       <img
@@ -12,7 +24,7 @@ const ProductCategory = ({ name, image }: { name: string; image: string }) => {
         {name}
         <Button
           text='shop'
-          onClick={() => console.log("click")}
+          onClick={() => navigate(linkTo)}
           type='transparent'
         />
       </div>
