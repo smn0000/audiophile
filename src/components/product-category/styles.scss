@@ -3,13 +3,13 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-inline: 5%;
 }
 
 .product-category__wrapper {
   display: flex;
   flex-direction: column;
   justify-content: end;
+  align-items: center;
   height: 250px;
   position: relative;
 }
@@ -22,7 +22,8 @@
   justify-content: end;
   height: 75%;
   width: 100%;
-  padding: 30px;
+  max-width: 350px;
+  padding-block: 30px;
   border-radius: 1rem;
   background-color: variables.$gray;
 }
@@ -30,12 +31,17 @@
 .product-category__image {
   z-index: 2;
   position: absolute;
-  height: 50%;
+  height: 60%;
   top: 20%;
   left: 50%;
   transform: translateX(-50%) translateY(-25%);
 }
 
+@media (min-width: 1024px) {
+  .product-category__box {
+    max-width: none;
+  }
+}
 @media (min-width: 768px) {
   .product-categories {
     flex-direction: row;

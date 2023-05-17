@@ -35,4 +35,12 @@
       color: variables.$primary;
     }
   }
+
+  &.type-black {
+    background-color: black;
+    color: white;
+    &:hover {
+      background-color: #4c4c4c;
+    }
+  }
 }

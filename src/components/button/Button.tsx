@@ -7,7 +7,7 @@ const Button = ({
 }: {
   onClick: MouseEventHandler
   text: string
-  type?: "deafult" | "alternate" | "transparent"
+  type?: "deafult" | "alternate" | "transparent" | "black"
 }) => {
   return (
     <button
