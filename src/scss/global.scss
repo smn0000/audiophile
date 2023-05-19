@@ -114,6 +114,17 @@ input {
 button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  pointer-events: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 h1 {
@@ -126,6 +137,7 @@ h1 {
 
 h2 {
   font-size: 40px;
+  font-weight: bold;
   text-transform: uppercase;
   line-height: 44px;
   letter-spacing: 1.5px;
@@ -133,6 +145,7 @@ h2 {
 
 h3 {
   font-size: 32px;
+  font-weight: bold;
   text-transform: uppercase;
   line-height: 36px;
   letter-spacing: 1.15px;
@@ -140,6 +153,7 @@ h3 {
 
 h4 {
   font-size: 28px;
+  font-weight: bold;
   text-transform: uppercase;
   line-height: 38px;
   letter-spacing: 2px;
@@ -147,6 +161,7 @@ h4 {
 
 h5 {
   font-size: 24px;
+  font-weight: bold;
   text-transform: uppercase;
   line-height: 33px;
   letter-spacing: 1.7px;
@@ -154,6 +169,7 @@ h5 {
 
 h6 {
   font-size: 18px;
+  font-weight: bold;
   text-transform: uppercase;
   line-height: 24px;
   letter-spacing: 1.3px;

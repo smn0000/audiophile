@@ -1,0 +1,46 @@
+@use "../../scss/variables.scss";
+.button {
+  font-weight: bold;
+  padding-block: 15px;
+  padding-inline: 45px;
+  text-transform: uppercase;
+
+  &.type-deafult {
+    background-color: variables.$primary;
+    color: white;
+    &:hover {
+      background-color: variables.$secondary;
+    }
+  }
+
+  &.type-alternate {
+    background-color: transparent;
+    color: black;
+    outline: 2px solid black;
+    &:hover {
+      outline: none;
+      background-color: black;
+      color: white;
+    }
+  }
+
+  &.type-transparent {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    background-color: transparent;
+    color: rgba($color: #000000, $alpha: 0.5);
+    &:hover {
+      outline: none;
+      color: variables.$primary;
+    }
+  }
+
+  &.type-black {
+    background-color: black;
+    color: white;
+    &:hover {
+      background-color: #4c4c4c;
+    }
+  }
+}

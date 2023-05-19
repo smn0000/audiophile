@@ -1,0 +1,14 @@
+section {
+  margin-bottom: 50px;
+  width: 80vw;
+
+  &:first-of-type {
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    width: 95vw;
+  }
+}
