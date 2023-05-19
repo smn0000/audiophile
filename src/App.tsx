@@ -5,6 +5,7 @@ import Home from "./pages/home/Home"
 import Category from "./pages/category/Category"
 import Product from "./pages/product/Product"
 import Checkout from "./pages/checkout/Checkout"
+import Footer from "./components/footer/Footer"
 function App() {
   return (
     <>
@@ -27,6 +28,7 @@ function App() {
           element={<Checkout />}
         />
       </Routes>
+      <Footer />
     </>
   )
 }

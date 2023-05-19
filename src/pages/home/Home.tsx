@@ -4,10 +4,11 @@ import Button from "../../components/button/Button"
 import ProductCategories from "../../components/product-category/ProductCategories"
 import { useMediaQuery } from "usehooks-ts"
 import { useEffect, useState } from "react"
+import BestGear from "../../components/best-gear/BestGear"
 
 const Home = () => {
-  const isMobile = useMediaQuery("(max-width:375px)")
-  const isTablet = useMediaQuery("(max-width:768px)")
+  const isMobile = useMediaQuery("(max-width:758px)")
+  const isTablet = useMediaQuery("(max-width:1024px)")
 
   // Changes the images when  viewport changes
   const [images, setImages] = useState({
@@ -88,13 +89,30 @@ const Home = () => {
         <div
           className='product-preveiw__medium'
           style={{ backgroundImage: `url('${images.medium}')` }}>
-          <h1>ZX7 SPEAKER</h1>
+          <h2>ZX7 SPEAKER</h2>
           <Button
             type='alternate'
             text='SEE PRODUCT'
             onClick={() => console.log("click")}
           />
         </div>
+
+        <div className='product-preview__small'>
+          <div
+            className='product-preview__small__left'
+            style={{ backgroundImage: `url('${images.small}')` }}></div>
+          <div className='product-preview__small__right'>
+            <h2>YX1 EARPHONES</h2>
+            <Button
+              type='alternate'
+              text='SEE PRODUCT'
+              onClick={() => console.log("click")}
+            />
+          </div>
+        </div>
+      </section>
+      <section>
+        <BestGear />
       </section>
     </div>
   )
