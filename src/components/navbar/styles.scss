@@ -36,6 +36,11 @@
     line-height: 25px;
     letter-spacing: 2px;
 
+    a {
+      display: block;
+      height: 100%;
+    }
+
     &:hover {
       color: variables.$primary;
       cursor: pointer;
