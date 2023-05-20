@@ -45,7 +45,7 @@ const Home = () => {
   }, [isMobile, isTablet])
 
   return (
-    <div className='home'>
+    <main className='home'>
       <section className='hero-section'>
         <div className='hero__wrapper'>
           <div className='hero'>
@@ -114,7 +114,7 @@ const Home = () => {
       <section>
         <BestGear />
       </section>
-    </div>
+    </main>
   )
 }
 

@@ -6,7 +6,14 @@ import Category from "./pages/category/Category"
 import Product from "./pages/product/Product"
 import Checkout from "./pages/checkout/Checkout"
 import Footer from "./components/footer/Footer"
+import { useLocation } from "react-router-dom"
+import { useEffect } from "react"
 function App() {
+  const location = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location])
+
   return (
     <>
       <Navbar></Navbar>
