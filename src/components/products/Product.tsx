@@ -1,17 +1,23 @@
 import { IProduct } from "../../interfaces"
 import Button from "../button/Button"
+import { useNavigate } from "react-router-dom"
 
-const Product = ({ product }: { product: IProduct }) => {
+const ProductDetails = ({ product }: { product: IProduct }) => {
+  const navigate = useNavigate()
   return (
     <div className='product'>
       <picture className='product__image'>
         <source
-          srcSet={product.image.mobile}
+          srcSet={product.categoryImage.mobile}
           media='(max-width:768px)'
+        />
+        <source
+          srcSet={product.categoryImage.tablet}
+          media='(max-width:1024px)'
         />
 
         <img
-          src={product.image.desktop}
+          src={product.categoryImage.desktop}
           role='presentation'
           loading='lazy'
         />
@@ -22,11 +28,11 @@ const Product = ({ product }: { product: IProduct }) => {
         <p className='product__description'>{product.description}</p>
         <Button
           text='SEE PRODUCT'
-          onClick={() => console.log("Click", product.slug)}
+          onClick={() => navigate(`/product/${product.slug}`)}
         />
       </div>
     </div>
   )
 }
 
-export default Product
+export default ProductDetails
