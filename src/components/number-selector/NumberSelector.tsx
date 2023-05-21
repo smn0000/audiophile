@@ -25,6 +25,7 @@ function counterReducer(state: CountState, action: CountAction): CountState {
         count: state.count + 1,
       }
     case "DECREMENT":
+      if (state.count <= 0) return { ...state, count: 0 }
       return {
         ...state,
         count: state.count - 1,
@@ -43,7 +44,11 @@ const NumberSelector = ({ updateValue }: { updateValue: any }) => {
 
   return (
     <div className='number-selector'>
-      <button onClick={() => dispatch({ type: "DECREMENT" })}>-</button>
+      <button
+        disabled={state.count === 0 ? true : false}
+        onClick={() => dispatch({ type: "DECREMENT" })}>
+        -
+      </button>
       <input
         ref={inputRef}
         key={state.count}
@@ -52,6 +57,7 @@ const NumberSelector = ({ updateValue }: { updateValue: any }) => {
           dispatch({ type: "SET", payload: Number(inputRef.current?.value) })
         }
         type='number'
+        pattern='[0-9]+'
       />
       <button onClick={() => dispatch({ type: "INCREMENT" })}>+</button>
     </div>

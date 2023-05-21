@@ -2,10 +2,17 @@
 
 .number-selector {
   background-color: variables.$gray;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 48px;
   button {
-    width: 48px;
-    height: 48px;
+    aspect-ratio: 1;
+    height: 100%;
+    &[disabled] {
+      cursor: not-allowed;
+    }
     &:hover {
       color: variables.$primary;
     }
@@ -17,13 +24,12 @@
     -webkit-appearance: none;
     margin: 0;
   }
+  flex: 1;
+  width: 48px;
   background-color: transparent;
   -moz-appearance: textfield;
   font-size: 13;
   font-weight: bold;
   text-align: center;
   border: none;
-
-  height: 48px;
-  width: 48px;
 }

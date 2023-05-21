@@ -1,9 +1,10 @@
 @use "../../scss/variables.scss";
 .button {
   font-weight: bold;
-  padding-block: 15px;
   padding-inline: 45px;
   text-transform: uppercase;
+  height: 48px;
+  white-space: nowrap;
 
   &.type-deafult {
     background-color: variables.$primary;

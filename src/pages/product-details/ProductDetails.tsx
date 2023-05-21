@@ -1,10 +1,12 @@
 import "./styles.scss"
+import "../page.scss"
 import { useParams } from "react-router-dom"
 import { useMemo, useState } from "react"
 import data from "../../data.json"
 import { IProduct } from "../../interfaces"
 import { useNavigate } from "react-router-dom"
 import NumberSelector from "../../components/number-selector/NumberSelector"
+import Button from "../../components/button/Button"
 
 const Product = () => {
   const { name } = useParams()
@@ -14,8 +16,17 @@ const Product = () => {
   const product = useMemo(getData, [])
   const [selectedQuantity, setSelectedQuantity] = useState<number>(1)
   const navigate = useNavigate()
+
+  const currencyFormatter = new Intl.NumberFormat("us-US", {
+    maximumFractionDigits: 0,
+    style: "currency",
+    currency: "USD",
+  })
+
+  console.log(product)
+
   return (
-    <div className='product-details'>
+    <main className='product-details'>
       <section>
         <button
           onClick={() => navigate(-1)}
@@ -41,16 +52,94 @@ const Product = () => {
           <div className='product-details__main__text'>
             {product.new && <p className='overline'>NEW PRODUCT</p>}
             <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <p>{product.price}</p>
+            <p className='product-details__main__description'>
+              {product.description}
+            </p>
+            <p className='product-details__main__price'>
+              {currencyFormatter.format(product.price)}
+            </p>
 
-            <NumberSelector
-              updateValue={(value: number) => setSelectedQuantity(value)}
-            />
+            <div className='product-details__main__add-to-cart'>
+              <NumberSelector
+                updateValue={(value: number) => setSelectedQuantity(value)}
+              />
+              <Button
+                text='ADD TO CART'
+                onClick={() => console.log("Add to cart")}
+              />
+            </div>
           </div>
         </div>
       </section>
-    </div>
+
+      <section className='product-details__info'>
+        <div className='product-details__features'>
+          <h3>FEATURES</h3>
+          <p className='product-details__features__text'>{product.features}</p>
+        </div>
+        <div className='product-details__box'>
+          <h3>IN THE BOX</h3>
+          <ul className='product-details__box__list'>
+            {product.includes.map((el) => (
+              <li>
+                <span className='product-details__box__quantity'>
+                  {el.quantity}x
+                </span>
+                {el.item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <section className='product-details__images'>
+        <picture className='product-details__images__first'>
+          <source
+            srcSet={product.gallery.first.mobile}
+            media='(max-width:768px)'
+          />
+          <source
+            srcSet={product.gallery.first.tablet}
+            media='(max-width:1024px)'
+          />
+          <img
+            src={product.gallery.first.desktop}
+            loading='lazy'
+            alt=''
+          />
+        </picture>
+        <picture className='product-details__images__second'>
+          <source
+            srcSet={product.gallery.second.mobile}
+            media='(max-width:768px)'
+          />
+          <source
+            srcSet={product.gallery.second.tablet}
+            media='(max-width:1024px)'
+          />
+          <img
+            src={product.gallery.second.desktop}
+            loading='lazy'
+            alt=''
+          />
+        </picture>
+
+        <picture className='product-details__images__third'>
+          <source
+            srcSet={product.gallery.third.mobile}
+            media='(max-width:768px)'
+          />
+          <source
+            srcSet={product.gallery.third.tablet}
+            media='(max-width:1024px)'
+          />
+          <img
+            src={product.gallery.third.desktop}
+            loading='lazy'
+            alt=''
+          />
+        </picture>
+      </section>
+    </main>
   )
 }
 
