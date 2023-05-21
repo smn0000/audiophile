@@ -1,26 +1,6 @@
 import "./styles.scss"
-import { useState, useEffect } from "react"
-import { useMediaQuery } from "usehooks-ts"
 
 const BestGear = () => {
-  const isTablet = useMediaQuery("(max-width:1024px)")
-  const isMobile = useMediaQuery("(max-width:768px)")
-  const [image, setImage] = useState(
-    "/assets/shared/desktop/image-best-gear.jpg"
-  )
-
-  useEffect(() => {
-    if (isMobile) {
-      setImage("/assets/shared/mobile/image-best-gear.jpg")
-      return
-    }
-    if (isTablet) {
-      setImage("/assets/shared/tablet/image-best-gear.jpg")
-      return
-    }
-    setImage("/assets/shared/desktop/image-best-gear.jpg")
-  }, [isMobile, isTablet])
-
   return (
     <div className='best-gear'>
       <div className='best-gear__left'>
@@ -36,13 +16,22 @@ const BestGear = () => {
           best place to buy your portable audio equipment.
         </p>
       </div>
-
-      <img
-        className='best-gear__right'
-        loading='lazy'
-        src={image}
-        alt=''
-      />
+      <picture className='best-gear__right'>
+        <source
+          srcSet='/assets/shared/mobile/image-best-gear.jpg'
+          media='(max-width:768px)'
+        />
+        <source
+          srcSet='/assets/shared/tablet/image-best-gear.jpg'
+          media='(max-width:1024px)'
+        />
+        <img
+          className='best-gear__right'
+          loading='lazy'
+          src='/assets/shared/desktop/image-best-gear.jpg'
+          alt=''
+        />
+      </picture>
     </div>
   )
 }

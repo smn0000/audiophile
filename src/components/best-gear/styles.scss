@@ -1,15 +1,15 @@
 @use "../../scss/variables.scss";
 .best-gear {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .best-gear__left {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 35px;
-  width: 50%;
+
   flex: 1;
   padding: 10% 5%;
 
@@ -19,13 +19,13 @@
 }
 
 .best-gear__right {
-  width: 50%;
   border-radius: 1rem;
 }
 
 @media (max-width: 1024px) {
   .best-gear {
-    flex-direction: column;
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr;
     text-align: center;
   }
   .best-gear__left,
