@@ -3,8 +3,10 @@ import "../page.scss"
 import Button from "../../components/button/Button"
 import ProductCategories from "../../components/product-category/ProductCategories"
 import BestGear from "../../components/best-gear/BestGear"
+import { useNavigate } from "react-router-dom"
 
 const Home = () => {
+  const navigate = useNavigate()
   return (
     <main className='home'>
       <section className='hero-section'>
@@ -53,7 +55,7 @@ const Home = () => {
             <Button
               text='SEE PRODUCT'
               type='black'
-              onClick={() => console.log("click")}
+              onClick={() => navigate("/product/zx9-speaker")}
             />
           </div>
         </div>
@@ -77,7 +79,7 @@ const Home = () => {
             <Button
               type='alternate'
               text='SEE PRODUCT'
-              onClick={() => console.log("click")}
+              onClick={() => navigate("/product/zx7-speaker")}
             />
           </div>
         </picture>
@@ -103,7 +105,7 @@ const Home = () => {
             <Button
               type='alternate'
               text='SEE PRODUCT'
-              onClick={() => console.log("click")}
+              onClick={() => navigate("/product/yx1-earphones")}
             />
           </div>
         </div>

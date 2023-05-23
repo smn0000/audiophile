@@ -9,7 +9,7 @@ export type TIncludes = {
   item: string
 }
 
-export type TOthers = {
+export type TOther = {
   slug: string
   name: string
   image: TImages
@@ -32,5 +32,16 @@ export interface IProduct {
     second: TImages
     third: TImages
   }
-  others: Array<TOthers>
+  others: Array<TOther>
+}
+
+export type TCartItem = {
+  item: IProduct
+  quantity: number
+}
+
+export interface ICart {
+  cartItems: TCartItem[]
+  cartTotalQuantity: number
+  cartTotalAmmount: number
 }

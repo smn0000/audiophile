@@ -7,13 +7,16 @@ import { IProduct } from "../../interfaces"
 import { useNavigate } from "react-router-dom"
 import NumberSelector from "../../components/number-selector/NumberSelector"
 import Button from "../../components/button/Button"
+import Recommended from "../../components/recommended/Recommended"
+import ProductCategories from "../../components/product-category/ProductCategories"
+import BestGear from "../../components/best-gear/BestGear"
 
 const Product = () => {
   const { name } = useParams()
   const getData = (): IProduct => {
     return data.filter((el) => el.slug === name)[0]
   }
-  const product = useMemo(getData, [])
+  const product = useMemo(getData, [name])
   const [selectedQuantity, setSelectedQuantity] = useState<number>(1)
   const navigate = useNavigate()
 
@@ -22,8 +25,6 @@ const Product = () => {
     style: "currency",
     currency: "USD",
   })
-
-  console.log(product)
 
   return (
     <main className='product-details'>
@@ -65,7 +66,7 @@ const Product = () => {
               />
               <Button
                 text='ADD TO CART'
-                onClick={() => console.log("Add to cart")}
+                onClick={() => console.log("Add to cart ", selectedQuantity)}
               />
             </div>
           </div>
@@ -80,8 +81,8 @@ const Product = () => {
         <div className='product-details__box'>
           <h3>IN THE BOX</h3>
           <ul className='product-details__box__list'>
-            {product.includes.map((el) => (
-              <li>
+            {product.includes.map((el, index) => (
+              <li key={index}>
                 <span className='product-details__box__quantity'>
                   {el.quantity}x
                 </span>
@@ -138,6 +139,15 @@ const Product = () => {
             alt=''
           />
         </picture>
+      </section>
+      <section>
+        <Recommended products={product.others} />
+      </section>
+      <section>
+        <ProductCategories />
+      </section>
+      <section>
+        <BestGear />
       </section>
     </main>
   )
