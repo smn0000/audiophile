@@ -6,10 +6,9 @@
   align-items: center;
   justify-content: center;
 
+  width: 120px;
   height: 48px;
   button {
-    aspect-ratio: 1;
-    height: 100%;
     &[disabled] {
       cursor: not-allowed;
     }
@@ -25,7 +24,7 @@
     margin: 0;
   }
   flex: 1;
-  width: 48px;
+  width: 50%;
   background-color: transparent;
   -moz-appearance: textfield;
   font-size: 13;

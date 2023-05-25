@@ -5,7 +5,6 @@ import Button from "../button/Button"
 
 const RecommendedItem = ({ product }: { product: TOther }) => {
   const navigate = useNavigate()
-  console.log(product.slug)
   return (
     <div
       key={product.slug}

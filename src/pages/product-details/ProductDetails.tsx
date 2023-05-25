@@ -10,6 +10,8 @@ import Button from "../../components/button/Button"
 import Recommended from "../../components/recommended/Recommended"
 import ProductCategories from "../../components/product-category/ProductCategories"
 import BestGear from "../../components/best-gear/BestGear"
+import { useDispatch } from "react-redux"
+import { addToCart } from "../../redux/cart"
 
 const Product = () => {
   const { name } = useParams()
@@ -19,6 +21,8 @@ const Product = () => {
   const product = useMemo(getData, [name])
   const [selectedQuantity, setSelectedQuantity] = useState<number>(1)
   const navigate = useNavigate()
+
+  const dispatch = useDispatch()
 
   const currencyFormatter = new Intl.NumberFormat("us-US", {
     maximumFractionDigits: 0,
@@ -53,20 +57,19 @@ const Product = () => {
           <div className='product-details__main__text'>
             {product.new && <p className='overline'>NEW PRODUCT</p>}
             <h2>{product.name}</h2>
-            <p className='product-details__main__description'>
-              {product.description}
-            </p>
-            <p className='product-details__main__price'>
-              {currencyFormatter.format(product.price)}
-            </p>
+            <p className='product-details__main__description'>{product.description}</p>
+            <p className='product-details__main__price'>{currencyFormatter.format(product.price)}</p>
 
             <div className='product-details__main__add-to-cart'>
               <NumberSelector
-                updateValue={(value: number) => setSelectedQuantity(value)}
+                onIncrement={() => setSelectedQuantity((current) => current + 1)}
+                onDecrement={() => setSelectedQuantity((current) => current - 1)}
+                onSet={(value) => setSelectedQuantity(value)}
+                currentValue={selectedQuantity}
               />
               <Button
                 text='ADD TO CART'
-                onClick={() => console.log("Add to cart ", selectedQuantity)}
+                onClick={() => dispatch(addToCart({ item: product, quantity: selectedQuantity }))}
               />
             </div>
           </div>
@@ -83,9 +86,7 @@ const Product = () => {
           <ul className='product-details__box__list'>
             {product.includes.map((el, index) => (
               <li key={index}>
-                <span className='product-details__box__quantity'>
-                  {el.quantity}x
-                </span>
+                <span className='product-details__box__quantity'>{el.quantity}x</span>
                 {el.item}
               </li>
             ))}
