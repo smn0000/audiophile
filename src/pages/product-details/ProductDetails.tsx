@@ -24,6 +24,11 @@ const Product = () => {
 
   const dispatch = useDispatch()
 
+  const handleAddToCart = () => {
+    dispatch(addToCart({ item: product, quantity: selectedQuantity }))
+    setSelectedQuantity(1)
+  }
+
   const currencyFormatter = new Intl.NumberFormat("us-US", {
     maximumFractionDigits: 0,
     style: "currency",
@@ -35,7 +40,7 @@ const Product = () => {
       <section>
         <button
           onClick={() => navigate(-1)}
-          className='product-details__back-btn'>
+          className='back-btn'>
           Go Back
         </button>
         <div className='product-details__main'>
@@ -69,7 +74,7 @@ const Product = () => {
               />
               <Button
                 text='ADD TO CART'
-                onClick={() => dispatch(addToCart({ item: product, quantity: selectedQuantity }))}
+                onClick={handleAddToCart}
               />
             </div>
           </div>

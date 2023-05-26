@@ -5,7 +5,7 @@ import { useOnClickOutside } from "usehooks-ts"
 import { useNavigate } from "react-router-dom"
 import { useAppSelector } from "../../redux/store"
 import { useDispatch } from "react-redux"
-import { clearCart } from "../../redux/cart"
+import cart, { clearCart } from "../../redux/cart"
 
 import CartItem from "../cart-item/CartItem"
 
@@ -28,21 +28,32 @@ const CartModal = ({ closeModal }: { closeModal: () => void }) => {
       <div
         className='cart__modal'
         ref={modalRef}>
-        <div className=''>
-          <span>Cart({cartTotalQuantity})</span>
-          <button onClick={() => dispatch(clearCart())}>Remove all</button>
-
-          <div>
-            {cartItems.map((cartItem) => (
-              <CartItem
-                key={cartItem.item.id}
-                data={cartItem}
-              />
-            ))}
+        <div className='cart__wrapper'>
+          <div className='cart__top'>
+            <p className='cart__top__quantity'>Cart ({cartTotalQuantity})</p>
+            <button
+              className='cart__top__button'
+              onClick={() => dispatch(clearCart())}>
+              Remove all
+            </button>
           </div>
-          <div>
-            <span>TOTAL</span>
-            <p>{currencyFormatter.format(cartTotalAmmount)}</p>
+          <div className='cart__items'>
+            {cartItems.length === 0 ? (
+              <p>Your cart is empty</p>
+            ) : (
+              cartItems.map((cartItem) => (
+                <CartItem
+                  key={cartItem.item.id}
+                  data={cartItem}
+                />
+              ))
+            )}
+          </div>
+          <div className='cart__bottom'>
+            <div className='cart__bottom__total'>
+              <p className='cart__bottom__total-text'>TOTAL</p>
+              <p className='cart__bottom__total-ammount'>{currencyFormatter.format(cartTotalAmmount)}</p>
+            </div>
             <Button
               text='CHECKOUT'
               onClick={() => navigate("/checkout")}

@@ -17,7 +17,7 @@ const NumberSelector = ({
   return (
     <div className='number-selector'>
       <button
-        disabled={currentValue === 1 ? true : false}
+        disabled={currentValue === 0 ? true : false}
         onClick={onDecrement}>
         -
       </button>

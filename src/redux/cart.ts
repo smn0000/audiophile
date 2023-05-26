@@ -35,7 +35,7 @@ export const cartSlice = createSlice({
       if (index >= 0) {
         state.cartTotalAmmount -= state.cartItems[index].quantity * item.price
         state.cartTotalQuantity -= state.cartItems[index].quantity
-        state.cartItems = state.cartItems.splice(index, 1)
+        state.cartItems.splice(index, 1)
       } else throw Error("This item isn't in the cart!")
     },
 
