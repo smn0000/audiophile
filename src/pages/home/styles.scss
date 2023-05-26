@@ -1,12 +1,5 @@
 @use "../../scss/variables.scss";
 
-.home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-}
-
 .hero-section {
   width: 100vw;
 }
@@ -72,12 +65,18 @@
   flex-direction: column;
   align-items: center;
   gap: 25px;
+}
 
-  & > div {
-    border-radius: 1rem;
-    max-height: 80vh;
-    width: 100%;
-  }
+.product-preveiw {
+  border-radius: 1rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .product-preview__big {
@@ -88,10 +87,15 @@
   background-repeat: no-repeat;
   display: flex;
   padding-left: 15%;
-  gap: 50px;
-  img {
+  gap: 25px;
+  picture {
     max-width: 50%;
     padding-top: 20%;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
@@ -120,7 +124,7 @@
     padding-inline: 0;
     padding-block: 10%;
 
-    img {
+    picture {
       padding-top: 0;
       height: 50%;
     }
@@ -135,65 +139,52 @@
 }
 
 .product-preveiw__medium {
-  aspect-ratio: 2.5;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: start;
-  padding: 10%;
-  h2 {
-    padding-right: 50%;
-  }
 
-  @media (max-width: 768px) {
-    padding-inline: 25px;
-  }
-
-  @media (max-width: 768px) {
-    aspect-ratio: 1;
+  .product-preview__medium__content {
+    position: absolute;
+    inset: 0;
+    left: 10%;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 50px;
   }
 }
 
 .product-preview__small {
-  aspect-ratio: 2.5;
-
   display: flex;
-  justify-content: space-evenly;
-  align-items: start;
-  gap: 16px;
-
-  & > div {
-    border-radius: 1rem;
-    height: 100%;
-  }
+  gap: 20px;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    aspect-ratio: 1;
-    & > div {
-      width: 100%;
-      height: 50%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    .product-preview__small__left,
+    .product-preview__small__right {
+      width: auto;
     }
   }
 }
 
 .product-preview__small__left {
-  aspect-ratio: 2.5;
   width: 50%;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 .product-preview__small__right {
-  width: 50%;
   background-color: variables.$gray;
+  width: 50%;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: start;
-  padding: 10% 5%;
+  gap: 50px;
+  padding-inline: 7%;
 }

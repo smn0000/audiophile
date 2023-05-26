@@ -1,0 +1,51 @@
+@use "../../scss/variables.scss";
+.input__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &.half {
+    width: 48%;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+  &.full {
+    width: 100%;
+  }
+  &.wrong {
+    color: #cd2c2c;
+
+    .label__wrong-format {
+      display: block;
+    }
+
+    .input {
+      border-color: #cd2c2c;
+    }
+  }
+}
+
+.input__label__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.label {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.label__wrong-format {
+  display: none;
+}
+.input {
+  border-radius: 0.5rem;
+  border: 1px solid #cfcfcf;
+  padding: 20px;
+  font-weight: bold;
+  outline: none;
+
+  &:focus {
+    border-color: variables.$primary;
+  }
+}

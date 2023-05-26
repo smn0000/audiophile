@@ -2,50 +2,13 @@ import "./styles.scss"
 import "../page.scss"
 import Button from "../../components/button/Button"
 import ProductCategories from "../../components/product-category/ProductCategories"
-import { useMediaQuery } from "usehooks-ts"
-import { useEffect, useState } from "react"
 import BestGear from "../../components/best-gear/BestGear"
+import { useNavigate } from "react-router-dom"
 
 const Home = () => {
-  const isMobile = useMediaQuery("(max-width:758px)")
-  const isTablet = useMediaQuery("(max-width:1024px)")
-
-  // Changes the images when  viewport changes
-  const [images, setImages] = useState({
-    big: "/assets/home/desktop/image-speaker-zx9.png",
-    medium: "/assets/home/desktop/image-speaker-zx7.jpg",
-    small: "/assets/home/desktop/image-earphones-yx1.jpg",
-  })
-  useEffect(() => {
-    if (isMobile) {
-      setImages({
-        big: "/assets/home/mobile/image-speaker-zx9.png",
-        medium: "/assets/home/mobile/image-speaker-zx7.jpg",
-        small: "/assets/home/mobile/image-earphones-yx1.jpg",
-      })
-      return
-    }
-    if (isTablet) {
-      setImages({
-        big: "/assets/home/tablet/image-speaker-zx9.png",
-        medium: "/assets/home/tablet/image-speaker-zx7.jpg",
-        small: "/assets/home/tablet/image-earphones-yx1.jpg",
-      })
-      return
-    }
-    if (!isMobile && !isTablet) {
-      setImages({
-        big: "/assets/home/desktop/image-speaker-zx9.png",
-        medium: "/assets/home/desktop/image-speaker-zx7.jpg",
-        small: "/assets/home/desktop/image-earphones-yx1.jpg",
-      })
-      return
-    }
-    console.log(isMobile, isTablet)
-  }, [isMobile, isTablet])
-
+  const navigate = useNavigate()
   return (
-    <div className='home'>
+    <main className='home'>
       <section className='hero-section'>
         <div className='hero__wrapper'>
           <div className='hero'>
@@ -66,12 +29,23 @@ const Home = () => {
         <ProductCategories />
       </section>
       <section className='products-preview'>
-        <div className='product-preview__big'>
-          <img
-            src={images.big}
-            loading='lazy'
-            alt='ZX9 SPEAKER'
-          />
+        <div className='product-preveiw product-preview__big'>
+          <picture>
+            <source
+              srcSet='/assets/home/mobile/image-speaker-zx9.png'
+              media='(max-width:768px)'
+            />
+            <source
+              srcSet=''
+              media='(max-width:1024px)'
+            />
+
+            <img
+              src='/assets/home/tablet/image-speaker-zx9.png'
+              loading='lazy'
+              alt='ZX9 SPEAKER'
+            />
+          </picture>
           <div className='product-preview__big__right'>
             <h1>ZX9 SPEAKER</h1>
             <p>
@@ -81,32 +55,57 @@ const Home = () => {
             <Button
               text='SEE PRODUCT'
               type='black'
-              onClick={() => console.log("click")}
+              onClick={() => navigate("/product/zx9-speaker")}
             />
           </div>
         </div>
 
-        <div
-          className='product-preveiw__medium'
-          style={{ backgroundImage: `url('${images.medium}')` }}>
-          <h2>ZX7 SPEAKER</h2>
-          <Button
-            type='alternate'
-            text='SEE PRODUCT'
-            onClick={() => console.log("click")}
+        <picture className='product-preveiw product-preveiw__medium'>
+          <source
+            srcSet='/assets/home/mobile/image-speaker-zx7.jpg'
+            media='(max-width:768px)'
           />
-        </div>
+          <source
+            srcSet='/assets/home/tablet/image-speaker-zx7.jpg'
+            media='(max-width:1024px)'
+          />
+          <img
+            src='/assets/home/desktop/image-speaker-zx7.jpg'
+            role='presentation'
+            loading='lazy'
+          />
+          <div className='product-preview__medium__content'>
+            <h2>ZX7 SPEAKER</h2>
+            <Button
+              type='alternate'
+              text='SEE PRODUCT'
+              onClick={() => navigate("/product/zx7-speaker")}
+            />
+          </div>
+        </picture>
 
-        <div className='product-preview__small'>
-          <div
-            className='product-preview__small__left'
-            style={{ backgroundImage: `url('${images.small}')` }}></div>
+        <div className='product-preveiw product-preview__small'>
+          <picture className='product-preview__small__left'>
+            <source
+              srcSet='/assets/home/mobile/image-earphones-yx1.jpg'
+              media='(max-width:768px)'
+            />
+            <source
+              srcSet='/assets/home/tablet/image-earphones-yx1.jpg'
+              media='(max-width:1024px)'
+            />
+            <img
+              src='/assets/home/desktop/image-earphones-yx1.jpg'
+              role='presentation'
+              loading='lazy'
+            />
+          </picture>
           <div className='product-preview__small__right'>
             <h2>YX1 EARPHONES</h2>
             <Button
               type='alternate'
               text='SEE PRODUCT'
-              onClick={() => console.log("click")}
+              onClick={() => navigate("/product/yx1-earphones")}
             />
           </div>
         </div>
@@ -114,7 +113,7 @@ const Home = () => {
       <section>
         <BestGear />
       </section>
-    </div>
+    </main>
   )
 }
 

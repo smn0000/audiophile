@@ -1,0 +1,36 @@
+@use "../../scss/variables.scss";
+
+.number-selector {
+  background-color: variables.$gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 120px;
+  height: 48px;
+  button {
+    height: 100%;
+    aspect-ratio: 1;
+    &[disabled] {
+      cursor: not-allowed;
+    }
+    &:hover {
+      color: variables.$primary;
+    }
+  }
+}
+.number-selector input {
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  flex: 1;
+  width: 50%;
+  background-color: transparent;
+  -moz-appearance: textfield;
+  font-size: 13;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+}

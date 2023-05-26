@@ -1,0 +1,142 @@
+@use "../../scss/variables.scss";
+.product-details {
+  margin-top: 50px;
+}
+
+.product-details__main {
+  margin-top: 50px;
+  display: flex;
+  gap: 50px;
+}
+
+.product-details__main__image {
+  width: 50%;
+}
+.product-details__main__text {
+  width: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 30px;
+}
+
+.product-details__main__description {
+  color: rgba($color: #000000, $alpha: 0.5);
+}
+
+.product-details__main__price {
+  font-weight: bold;
+  font-size: 18px;
+}
+.product-details__main__add-to-cart {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  * {
+    flex-shrink: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-details__main {
+    flex-direction: column;
+  }
+
+  .product-details__main__image,
+  .product-details__main__text {
+    width: 100%;
+  }
+}
+
+.product-details__info {
+  display: flex;
+}
+
+.product-details__features,
+.product-details__box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-details__features {
+  width: 65%;
+  padding-right: 10%;
+  p {
+    color: rgba($color: #000000, $alpha: 0.65);
+  }
+}
+
+.product-details__box {
+  width: 35%;
+}
+.product-details__features__text {
+  white-space: pre-line;
+}
+
+.product-details__box__list {
+  color: rgba($color: #000000, $alpha: 0.5);
+}
+
+.product-details__box__quantity {
+  color: variables.$primary;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+@media (max-width: 1024px) {
+  .product-details__info {
+    flex-direction: column;
+    gap: 100px;
+  }
+  .product-details__box,
+  .product-details__features {
+    width: 100%;
+  }
+
+  .product-details__box {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 20%;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-details__box {
+    flex-direction: column;
+  }
+}
+.product-details__images {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: 1fr 1fr;
+
+  picture {
+    height: 100%;
+    img {
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+  }
+}
+.product-details__images__third {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+@media (max-width: 768px) {
+  .product-details__images {
+    grid-template-rows: 1fr 1fr 2fr;
+    grid-template-columns: none;
+  }
+  .product-details__images__third {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}

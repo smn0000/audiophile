@@ -1,28 +1,26 @@
 import { Link } from "react-router-dom"
 import { useState, useRef, useEffect } from "react"
-import { useOnClickOutside } from "usehooks-ts"
 import { useLocation } from "react-router-dom"
-
 import MobileMenu from "./Mobilemenu/MobileMenu"
 import "./styles.scss"
+import CartModal from "../cart-modal/CartModal"
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false)
-  const navRef = useRef(null)
+  const [showCart, setShowCart] = useState(false)
+
   const location = useLocation()
   useEffect(() => {
     setShowMenu(false)
   }, [location])
 
-  useOnClickOutside(navRef, () => setShowMenu(false))
-
   return (
     <>
-      <nav
-        className='navbar'
-        ref={navRef}>
+      <nav className='navbar'>
         <ul className='nav__items'>
           <li className='nav__left'>
-            <button onClick={() => setShowMenu((current) => !current)}>
+            <button
+              onClick={() => setShowMenu((current) => !current)}
+              disabled={showMenu}>
               <svg
                 width='16'
                 height='15'
@@ -66,7 +64,9 @@ const Navbar = () => {
             </ul>
           </li>
           <li className='nav__right'>
-            <button>
+            <button
+              disabled={showCart}
+              onClick={() => (showCart ? setShowCart(false) : setShowCart(true))}>
               <svg
                 width='23'
                 height='20'
@@ -83,6 +83,7 @@ const Navbar = () => {
         {showMenu && <MobileMenu closeMenu={() => setShowMenu(false)} />}
       </nav>
       {showMenu && <div className='mobile-menu__background'></div>}
+      {showCart && <CartModal closeModal={() => setShowCart(false)} />}
     </>
   )
 }

@@ -2,15 +2,17 @@
 .navbar {
   background-color: variables.$dark;
   height: 90px;
-  border-bottom: 1px solid #919191;
+
   padding-inline: 10%;
   position: relative;
+  z-index: 10;
 
   .nav__items {
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #91919167;
   }
 }
 
@@ -35,6 +37,11 @@
     font-size: 13px;
     line-height: 25px;
     letter-spacing: 2px;
+
+    a {
+      display: block;
+      height: 100%;
+    }
 
     &:hover {
       color: variables.$primary;

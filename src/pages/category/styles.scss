@@ -1,0 +1,9 @@
+@use "../../scss/variables.scss";
+
+.category__title {
+  background-color: variables.$dark;
+  color: white;
+  text-align: center;
+  padding: 3%;
+  width: 100%;
+}

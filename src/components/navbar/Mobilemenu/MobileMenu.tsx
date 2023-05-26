@@ -1,13 +1,18 @@
 import ProductCategories from "../../product-category/ProductCategories"
-import { useLocation } from "react-router-dom"
-import { useEffect } from "react"
+import { useOnClickOutside } from "usehooks-ts"
+import { useRef } from "react"
 
 import "./styles.scss"
 
 const MobileMenu = ({ closeMenu }: { closeMenu: () => any }) => {
+  const menuRef = useRef(null)
+  useOnClickOutside(menuRef, closeMenu)
+
   return (
     <>
-      <div className='mobile-menu'>
+      <div
+        className='mobile-menu'
+        ref={menuRef}>
         <ProductCategories />
       </div>
     </>

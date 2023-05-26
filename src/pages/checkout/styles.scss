@@ -1,0 +1,65 @@
+@use "../../scss/variables.scss";
+
+main {
+  background-color: variables.$gray;
+}
+section {
+  margin-top: 50px;
+}
+
+.back-btn {
+  margin-bottom: 25px;
+}
+
+form {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 4rem 2rem;
+  width: 75%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form__section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__delivery__info {
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  svg {
+    min-width: 48px;
+  }
+  p {
+    color: rgba($color: #000000, $alpha: 0.5);
+  }
+}
+
+@media (max-width: 1024px) {
+  form {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .form__row {
+    flex-direction: column;
+  }
+
+  .form__delivery__info {
+    flex-direction: column;
+  }
+}

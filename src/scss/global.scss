@@ -112,6 +112,7 @@ input {
 }
 
 button {
+  font: inherit;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -127,6 +128,12 @@ a {
   color: inherit;
 }
 
+ul {
+  li {
+    font-weight: bold;
+    font-size: 13px;
+  }
+}
 h1 {
   font-size: 56px;
   font-weight: bold;
@@ -189,9 +196,15 @@ h6 {
   line-height: 25px;
   letter-spacing: 1px;
   color: variables.$primary;
+  font-weight: bold;
 }
 
 body {
   font-size: 15px;
   line-height: 25px;
+}
+
+.back-btn {
+  color: rgba($color: #000000, $alpha: 0.5);
+  cursor: pointer;
 }
