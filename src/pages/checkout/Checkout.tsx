@@ -32,6 +32,7 @@ const Checkout = () => {
                 placeholder='Insert your email'
                 name='email'
                 label='email address'
+                format='email'
               />
             </div>
             <div className='form_row'>
@@ -39,6 +40,7 @@ const Checkout = () => {
                 placeholder='Insert your phone number'
                 name='phone'
                 label='Phone Number'
+                format='phone'
               />
             </div>
           </div>
@@ -57,6 +59,7 @@ const Checkout = () => {
                 placeholder='Insert your zip code'
                 name='zip'
                 label='ZIP Code'
+                format='zipcode'
               />
               <InputText
                 placeholder='Insert your city'
@@ -87,11 +90,13 @@ const Checkout = () => {
                 placeholder='Insert your e-Money number'
                 label='e-Money Number'
                 name='e-money'
+                format='phone'
               />
               <InputText
                 placeholder='Insert your e-Money PIN'
                 label='e-Money PIN'
                 name='pin'
+                format='pin'
               />
             </div>
           </div>
