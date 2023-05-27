@@ -22,8 +22,11 @@ const InputText = ({
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
   )
   regExp.set("phone", /^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/)
-  regExp.set("zipcode", /^[0-9]{5}(?:-[0-9]{4})?$/)
-  regExp.set("pin", /^d{4}$|^d{6}$"/)
+  regExp.set(
+    "zipcode",
+    /^(?:(?:(?:\+|00)?48)|(?:\(\+?48\)))?(?:1[2-8]|2[2-69]|3[2-49]|4[1-8]|5[0-9]|6[0-35-9]|[7-8][1-9]|9[145])\d{7}&/
+  )
+  regExp.set("pin", /^[0-9]{4}$/)
   const [isValidInput, setIsValidInput] = useState(true)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

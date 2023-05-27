@@ -5,7 +5,7 @@ import { useOnClickOutside } from "usehooks-ts"
 import { useNavigate } from "react-router-dom"
 import { useAppSelector } from "../../redux/store"
 import { useDispatch } from "react-redux"
-import cart, { clearCart } from "../../redux/cart"
+import { clearCart } from "../../redux/cart"
 
 import CartItem from "../cart-item/CartItem"
 
@@ -56,7 +56,10 @@ const CartModal = ({ closeModal }: { closeModal: () => void }) => {
             </div>
             <Button
               text='CHECKOUT'
-              onClick={() => navigate("/checkout")}
+              onClick={() => {
+                navigate("/checkout")
+                closeModal()
+              }}
             />
           </div>
         </div>
