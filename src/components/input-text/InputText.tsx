@@ -1,5 +1,4 @@
 import "./styles.scss"
-import { useState } from "react"
 
 const InputText = ({
   placeholder,
