@@ -208,3 +208,12 @@ body {
   color: rgba($color: #000000, $alpha: 0.5);
   cursor: pointer;
 }
+
+.cart__item__name {
+  font-weight: bold;
+}
+
+.cart__item__price {
+  font-weight: bold;
+  color: rgba($color: #000000, $alpha: 0.5);
+}

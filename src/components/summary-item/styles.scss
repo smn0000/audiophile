@@ -1,0 +1,30 @@
+.summary-item__wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.summary-item__image {
+  height: 64px;
+  border-radius: 0.5rem;
+}
+.summary-item__middle {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex: 1;
+
+  .item__name {
+    font-weight: bold;
+  }
+  .item__price {
+    color: rgba($color: #000000, $alpha: 0.5);
+    font-weight: bold;
+  }
+}
+
+.summary-item__quantity {
+  p {
+    color: rgba($color: #000000, $alpha: 0.5);
+    font-weight: bold;
+  }
+}

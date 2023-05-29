@@ -4,27 +4,13 @@ import NumberSelector from "../number-selector/NumberSelector"
 import { useDispatch } from "react-redux"
 import { modifyItem, removeFromCart } from "../../redux/cart"
 import { useAppSelector } from "../../redux/store"
+import { parseItemName, currencyFormatter } from "../../functions"
 
 const CartItem = ({ data }: { data: TCartItem }) => {
   const dispatch = useDispatch()
 
   const cartItem = useAppSelector((state) => state.cart.cartItems.filter((el) => el.item.id === data.item.id))
   const { item, quantity } = cartItem[0]
-
-  const currencyFormatter = new Intl.NumberFormat("us-US", {
-    maximumFractionDigits: 0,
-    style: "currency",
-    currency: "USD",
-  })
-
-  const parseItemName = (name: string): string => {
-    let string = ""
-    for (let i = 0; i < name.length; i++) {
-      if (name[i] === " ") break
-      else string = string + name[i]
-    }
-    return string
-  }
 
   const handleDecrement = () => {
     if (quantity === 1) return dispatch(removeFromCart({ item, quantity }))

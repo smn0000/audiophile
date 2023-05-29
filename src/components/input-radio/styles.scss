@@ -4,6 +4,19 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  position: relative;
+
+  &.wrong {
+    .input-radio__wrong {
+      display: block;
+    }
+    .input-radio__wrapper {
+      border-color: #cd2c2c;
+    }
+    .input-radio__label {
+      color: #cd2c2c;
+    }
+  }
 }
 .input-radio__group {
   display: flex;
@@ -51,6 +64,13 @@
   }
 }
 
+.input-radio__wrong {
+  display: none;
+  color: #cd2c2c;
+
+  position: absolute;
+  right: 0;
+}
 @media (max-width: 768px) {
   .input-radio__group {
     flex-direction: column;

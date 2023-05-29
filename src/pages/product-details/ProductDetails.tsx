@@ -12,6 +12,7 @@ import ProductCategories from "../../components/product-category/ProductCategori
 import BestGear from "../../components/best-gear/BestGear"
 import { useDispatch } from "react-redux"
 import { addToCart } from "../../redux/cart"
+import { toast } from "react-toastify"
 
 const Product = () => {
   const { name } = useParams()
@@ -27,6 +28,16 @@ const Product = () => {
   const handleAddToCart = () => {
     dispatch(addToCart({ item: product, quantity: selectedQuantity }))
     setSelectedQuantity(1)
+    toast.success("Added to cart", {
+      position: "top-right",
+      autoClose: 500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    })
   }
 
   const currencyFormatter = new Intl.NumberFormat("us-US", {
@@ -36,114 +47,101 @@ const Product = () => {
   })
 
   return (
-    <main className='product-details'>
+    <main className="product-details">
       <section>
-        <button
-          onClick={() => navigate(-1)}
-          className='back-btn'>
+        <button onClick={() => navigate(-1)} className="back-btn">
           Go Back
         </button>
-        <div className='product-details__main'>
-          <picture className='product-details__main__image'>
-            <source
-              srcSet={product.image.mobile}
-              media='(max-width:768px)'
-            />
-            <source
-              srcSet={product.image.tablet}
-              media='(max-width:1024px)'
-            />
+        <div className="product-details__main">
+          <picture className="product-details__main__image">
+            <source srcSet={product.image.mobile} media="(max-width:768px)" />
+            <source srcSet={product.image.tablet} media="(max-width:1024px)" />
             <img
               src={product.image.desktop}
-              role='presentation'
-              loading='lazy'
+              role="presentation"
+              loading="lazy"
             />
           </picture>
-          <div className='product-details__main__text'>
-            {product.new && <p className='overline'>NEW PRODUCT</p>}
+          <div className="product-details__main__text">
+            {product.new && <p className="overline">NEW PRODUCT</p>}
             <h2>{product.name}</h2>
-            <p className='product-details__main__description'>{product.description}</p>
-            <p className='product-details__main__price'>{currencyFormatter.format(product.price)}</p>
+            <p className="product-details__main__description">
+              {product.description}
+            </p>
+            <p className="product-details__main__price">
+              {currencyFormatter.format(product.price)}
+            </p>
 
-            <div className='product-details__main__add-to-cart'>
+            <div className="product-details__main__add-to-cart">
               <NumberSelector
-                onIncrement={() => setSelectedQuantity((current) => current + 1)}
-                onDecrement={() => setSelectedQuantity((current) => current - 1)}
+                onIncrement={() =>
+                  setSelectedQuantity((current) => current + 1)
+                }
+                onDecrement={() =>
+                  setSelectedQuantity((current) => current - 1)
+                }
                 onSet={(value) => setSelectedQuantity(value)}
                 currentValue={selectedQuantity}
               />
-              <Button
-                text='ADD TO CART'
-                onClick={handleAddToCart}
-              />
+              <Button text="ADD TO CART" onClick={handleAddToCart} />
             </div>
           </div>
         </div>
       </section>
 
-      <section className='product-details__info'>
-        <div className='product-details__features'>
+      <section className="product-details__info">
+        <div className="product-details__features">
           <h3>FEATURES</h3>
-          <p className='product-details__features__text'>{product.features}</p>
+          <p className="product-details__features__text">{product.features}</p>
         </div>
-        <div className='product-details__box'>
+        <div className="product-details__box">
           <h3>IN THE BOX</h3>
-          <ul className='product-details__box__list'>
+          <ul className="product-details__box__list">
             {product.includes.map((el, index) => (
               <li key={index}>
-                <span className='product-details__box__quantity'>{el.quantity}x</span>
+                <span className="product-details__box__quantity">
+                  {el.quantity}x
+                </span>
                 {el.item}
               </li>
             ))}
           </ul>
         </div>
       </section>
-      <section className='product-details__images'>
-        <picture className='product-details__images__first'>
+      <section className="product-details__images">
+        <picture className="product-details__images__first">
           <source
             srcSet={product.gallery.first.mobile}
-            media='(max-width:768px)'
+            media="(max-width:768px)"
           />
           <source
             srcSet={product.gallery.first.tablet}
-            media='(max-width:1024px)'
+            media="(max-width:1024px)"
           />
-          <img
-            src={product.gallery.first.desktop}
-            loading='lazy'
-            alt=''
-          />
+          <img src={product.gallery.first.desktop} loading="lazy" alt="" />
         </picture>
-        <picture className='product-details__images__second'>
+        <picture className="product-details__images__second">
           <source
             srcSet={product.gallery.second.mobile}
-            media='(max-width:768px)'
+            media="(max-width:768px)"
           />
           <source
             srcSet={product.gallery.second.tablet}
-            media='(max-width:1024px)'
+            media="(max-width:1024px)"
           />
-          <img
-            src={product.gallery.second.desktop}
-            loading='lazy'
-            alt=''
-          />
+          <img src={product.gallery.second.desktop} loading="lazy" alt="" />
         </picture>
 
-        <picture className='product-details__images__third'>
+        <picture className="product-details__images__third">
           <source
             srcSet={product.gallery.third.mobile}
-            media='(max-width:768px)'
+            media="(max-width:768px)"
           />
           <source
             srcSet={product.gallery.third.tablet}
-            media='(max-width:1024px)'
+            media="(max-width:1024px)"
           />
-          <img
-            src={product.gallery.third.desktop}
-            loading='lazy'
-            alt=''
-          />
+          <img src={product.gallery.third.desktop} loading="lazy" alt="" />
         </picture>
       </section>
       <section>

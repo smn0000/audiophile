@@ -1,0 +1,126 @@
+@use "../../scss/variables.scss";
+.order-modal__background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  width: 100vw;
+  height: 100vh;
+}
+
+.order-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order__wrapper {
+  background-color: white;
+  width: 550px;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 2rem;
+}
+
+.order-modal__items {
+  display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .order-modal__items__list {
+      width: 100%;
+
+      max-height: 300px;
+      border-radius: 1rem 1rem 0 0;
+    }
+    .order-modal__total {
+      width: 100%;
+      height: 100px;
+      border-radius: 0 0 1rem 1rem;
+    }
+  }
+}
+
+.order-modal__items__list {
+  max-height: 40vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  background-color: variables.$gray;
+  width: 55%;
+  padding: 1rem;
+  gap: 5px;
+
+  border-radius: 1rem 0 0 1rem;
+  position: relative;
+}
+
+.order-modal__item {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  padding-block: 10px;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.order-modal__item__image {
+  width: 50px;
+  height: 50px;
+}
+
+.order-modal__item__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  padding-inline: 30px;
+}
+
+.cart__item__quantity {
+  font-weight: bold;
+  color: rgba($color: #000000, $alpha: 0.5);
+}
+.order-modal__total {
+  background-color: black;
+  color: white;
+  width: 40%;
+  padding: 1rem;
+  border-radius: 0 1rem 1rem 0;
+}
+
+.order-modal__show-button {
+  font-weight: bold;
+  color: rgba($color: #000000, $alpha: 0.5);
+  border-top: 2px solid rgba($color: #000000, $alpha: 0.2);
+  padding-top: 10px;
+}
+
+.order-modal__total {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.order-modal__total__text {
+  color: rgba($color: #fff, $alpha: 0.8);
+
+  font-size: 15px;
+}
+.order-modal__total__ammount {
+  font-weight: bold;
+}
