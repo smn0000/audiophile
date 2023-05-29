@@ -5,9 +5,9 @@ import { useAppSelector } from "../../redux/store"
 import { currencyFormatter } from "../../functions"
 import { useState } from "react"
 import { useFormik } from "formik"
+import { toast } from "react-toastify"
 import * as Yup from "Yup"
 import OrderModal from "../../components/order-modal/OrderModal"
-
 import SummaryItem from "../../components/summary-item/SummaryItem"
 import InputText from "../../components/input-text/InputText"
 import InputRadio from "../../components/input-radio/InputRadio"
@@ -33,6 +33,16 @@ const Checkout = () => {
     },
     onSubmit: () => {
       setShowModal(true)
+      toast.success("Order placed!", {
+        position: "top-right",
+        autoClose: 500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
     },
     validationSchema: Yup.object({
       email: Yup.string().required().email(),

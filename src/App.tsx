@@ -8,7 +8,8 @@ import Checkout from "./pages/checkout/Checkout"
 import Footer from "./components/footer/Footer"
 import { useLocation } from "react-router-dom"
 import { useEffect } from "react"
-
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 function App() {
   const location = useLocation()
   useEffect(() => {
@@ -17,24 +18,13 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <Navbar></Navbar>
       <Routes>
-        <Route
-          path='/'
-          element={<Home />}
-        />
-        <Route
-          path='/category/:name'
-          element={<Category />}
-        />
-        <Route
-          path='/product/:name'
-          element={<Product />}
-        />
-        <Route
-          path='/checkout'
-          element={<Checkout />}
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/category/:name" element={<Category />} />
+        <Route path="/product/:name" element={<Product />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </>
