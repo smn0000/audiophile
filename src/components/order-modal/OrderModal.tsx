@@ -67,15 +67,16 @@ const OrderModal = ({
                   <div className="cart__item__quantity">x{el.quantity}</div>
                 </div>
               ))}
-
-              <button
-                onClick={() => setIsShowAll((current) => !current)}
-                className="order-modal__show-button"
-              >
-                {isShowAll
-                  ? "View less"
-                  : `and ${cartItems.length - 1} other item(s)`}
-              </button>
+              {cartItems.length > 1 && (
+                <button
+                  onClick={() => setIsShowAll((current) => !current)}
+                  className="order-modal__show-button"
+                >
+                  {isShowAll
+                    ? "View less"
+                    : `and ${cartItems.length - 1} other item(s)`}
+                </button>
+              )}
             </div>
 
             <div className="order-modal__total">

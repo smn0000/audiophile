@@ -18,7 +18,7 @@ const CartModal = ({ closeModal }: { closeModal: () => void }) => {
     (state) => state.cart
   )
 
-  useOnClickOutside(modalRef, closeModal)
+  useOnClickOutside(modalRef, closeModal, "mouseup")
 
   const currencyFormatter = new Intl.NumberFormat("us-US", {
     maximumFractionDigits: 0,
@@ -36,16 +36,7 @@ const CartModal = ({ closeModal }: { closeModal: () => void }) => {
               className="cart__top__button"
               onClick={() => {
                 dispatch(clearCart())
-                toast.success("Items removed", {
-                  position: "top-right",
-                  autoClose: 500,
-                  hideProgressBar: true,
-                  closeOnClick: true,
-                  pauseOnHover: false,
-                  draggable: true,
-                  progress: undefined,
-                  theme: "light",
-                })
+                toast.success("Items removed")
               }}
             >
               Remove all

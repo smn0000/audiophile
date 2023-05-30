@@ -28,16 +28,7 @@ const Product = () => {
   const handleAddToCart = () => {
     dispatch(addToCart({ item: product, quantity: selectedQuantity }))
     setSelectedQuantity(1)
-    toast.success("Added to cart", {
-      position: "top-right",
-      autoClose: 500,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    })
+    toast.success("Added to cart")
   }
 
   const currencyFormatter = new Intl.NumberFormat("us-US", {

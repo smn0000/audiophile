@@ -13,7 +13,10 @@ import InputText from "../../components/input-text/InputText"
 import InputRadio from "../../components/input-radio/InputRadio"
 
 const regExp = new Map()
-regExp.set("phone", /^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/)
+regExp.set(
+  "phone",
+  /^(?:\+?\d{1,3}[ -]?)?(?:(?:\(?\d{1,3}\)?[ -]?)?\d{1,4}[ -]?\d{1,4}[ -]?\d{1,9}|(?:\d{1,4}[ -]?\d{1,4}[ -]?\d{1,9}))$/
+)
 regExp.set("zip", /^\d{5}(?:[-\s]\d{4})?$/)
 regExp.set("pin", /^[0-9]{4}$/)
 
@@ -33,16 +36,7 @@ const Checkout = () => {
     },
     onSubmit: () => {
       setShowModal(true)
-      toast.success("Order placed!", {
-        position: "top-right",
-        autoClose: 500,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      })
+      toast.success("Order placed!")
     },
     validationSchema: Yup.object({
       email: Yup.string().required().email(),
@@ -236,7 +230,9 @@ const Checkout = () => {
                     </div>
                   </div>
 
-                  <button type="submit">CON</button>
+                  <button type="submit" className="button type-deafult">
+                    CONTINUE & PAY
+                  </button>
                 </>
               ) : (
                 <div>Your cart is empty</div>

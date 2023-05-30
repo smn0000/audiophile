@@ -6,13 +6,11 @@ import "./styles.scss"
 
 const MobileMenu = ({ closeMenu }: { closeMenu: () => any }) => {
   const menuRef = useRef(null)
-  useOnClickOutside(menuRef, closeMenu)
+  useOnClickOutside(menuRef, closeMenu, "mouseup")
 
   return (
     <>
-      <div
-        className='mobile-menu'
-        ref={menuRef}>
+      <div className="mobile-menu" ref={menuRef}>
         <ProductCategories />
       </div>
     </>

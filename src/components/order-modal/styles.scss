@@ -54,16 +54,16 @@
 
 .order-modal__items__list {
   max-height: 40vh;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   background-color: variables.$gray;
   width: 55%;
   padding: 1rem;
   gap: 5px;
-
   border-radius: 1rem 0 0 1rem;
   position: relative;
+
+  overflow-y: scroll;
 }
 
 .order-modal__item {
